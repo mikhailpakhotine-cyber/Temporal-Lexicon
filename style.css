@@ -175,6 +175,89 @@ main {
     transform: scale(0.98);
 }
 
+/* === Prompt Generator === */
+.prompt-generator {
+    padding: 2.5rem 2rem;
+    background-color: #0f0f0f;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    text-align: center;
+}
+
+.prompt-generator h3 {
+    font-size: 1.6rem;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+    color: #ffaa00;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.prompt-description {
+    font-size: 1rem;
+    color: #a0a0a0;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.prompt-generator button {
+    padding: 0.9rem 2.5rem;
+    background-color: #ff6600;
+    color: #0a0a0a;
+    border: none;
+    font-family: 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+}
+
+.prompt-generator button:hover {
+    background-color: #ffaa00;
+    box-shadow: 0 0 16px rgba(255, 170, 0, 0.6);
+    transform: translateY(-2px);
+}
+
+.prompt-generator button:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.prompt-display {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background-color: #0a0a0a;
+    border: 1px solid #00ffff;
+    border-radius: 6px;
+    color: #00ffff;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.15);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* === Footer / Extended Statement === */
 footer {
     padding: 3rem 2rem;
@@ -222,6 +305,19 @@ footer {
         padding: 1.5rem;
     }
 
+    .prompt-generator {
+        padding: 2rem 1.5rem;
+    }
+
+    .prompt-generator h3 {
+        font-size: 1.4rem;
+    }
+
+    .prompt-display {
+        font-size: 1rem;
+        padding: 1.2rem;
+    }
+
     footer {
         padding: 2rem 1.5rem;
     }
@@ -241,6 +337,24 @@ footer {
     }
 
     .controls {
+        padding: 1rem;
+    }
+
+    .prompt-generator {
+        padding: 1.5rem 1rem;
+    }
+
+    .prompt-generator h3 {
+        font-size: 1.2rem;
+    }
+
+    .prompt-generator button {
+        font-size: 0.95rem;
+        padding: 0.75rem 2rem;
+    }
+
+    .prompt-display {
+        font-size: 0.95rem;
         padding: 1rem;
     }
 

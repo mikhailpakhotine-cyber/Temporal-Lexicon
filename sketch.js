@@ -41,12 +41,19 @@ class SeededRandom {
 class Word {
     constructor(text, x, y, size, seed) {
         this.text = text;
-        this.targetX = x;
-        this.targetY = y;
+        this.x = x;
+        this.y = y;
         this.size = size;
         this.birthTime = millis();
         this.deathTime = this.birthTime + UPDATE_INTERVAL;
         this.alpha = 0;
+
+        // Add flowing motion with seeded velocity
+        const rng = new SeededRandom(seed + text.charCodeAt(0));
+        const speed = rng.nextFloat(0.3, 1.2);
+        const angle = rng.nextFloat(0, TWO_PI);
+        this.vx = cos(angle) * speed;
+        this.vy = sin(angle) * speed;
     }
 
     update() {
@@ -66,6 +73,16 @@ class Word {
         else {
             this.alpha = 255;
         }
+
+        // Update position with velocity
+        this.x += this.vx;
+        this.y += this.vy;
+
+        // Wrap around edges
+        if (this.x < -50) this.x = width + 50;
+        if (this.x > width + 50) this.x = -50;
+        if (this.y < -50) this.y = height + 50;
+        if (this.y > height + 50) this.y = -50;
     }
 
     display() {
@@ -73,7 +90,7 @@ class Word {
         fill(this.getColor());
         textSize(this.size);
         textAlign(CENTER, CENTER);
-        text(this.text, this.targetX, this.targetY);
+        text(this.text, this.x, this.y);
         pop();
     }
 
@@ -222,6 +239,55 @@ function setupUIListeners() {
             alert('Please enter some text (at least a few words).');
         }
     });
+
+    // Prompt generator button
+    const promptButton = document.getElementById('generatePrompt');
+    if (promptButton) {
+        promptButton.addEventListener('click', generateWritingPrompt);
+    }
+}
+
+// === Writing Prompt Generator ===
+function generateWritingPrompt() {
+    // Get currently visible words (those with significant alpha)
+    const visibleWords = currentWords
+        .filter(word => word.alpha > 100)
+        .map(word => word.text);
+
+    const promptDisplay = document.getElementById('promptDisplay');
+
+    if (visibleWords.length === 0) {
+        promptDisplay.textContent = "Waiting for words to appear...";
+        promptDisplay.style.opacity = '0.5';
+        return;
+    }
+
+    // Create list of words for display
+    const wordList = visibleWords.join(', ');
+
+    // Generate the prompt
+    const prompts = [
+        `Write 5 sentences about these floating words: ${wordList}`,
+        `Compose 5 sentences that weave together: ${wordList}`,
+        `In 5 sentences, explore the constellation of: ${wordList}`,
+        `Create 5 sentences connecting these drifting concepts: ${wordList}`,
+        `Write 5 sentences meditating on: ${wordList}`,
+        `Compose 5 sentences as these words float before you: ${wordList}`,
+        `In 5 sentences, trace the relationships between: ${wordList}`,
+        `Write 5 sentences inspired by the ephemeral presence of: ${wordList}`
+    ];
+
+    // Select random prompt
+    const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
+
+    promptDisplay.textContent = randomPrompt;
+    promptDisplay.style.opacity = '1';
+
+    // Add fade-in effect
+    promptDisplay.style.animation = 'none';
+    setTimeout(() => {
+        promptDisplay.style.animation = 'fadeIn 0.5s ease-in';
+    }, 10);
 }
 
 // === Reset Constellation ===
