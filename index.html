@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporal Lexicon Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Temporal Lexicon Generator</h1>
+        <div class="statement-brief">
+            <p>
+                A temporal constellation where language dissolves into data,
+                and meaning emerges from the spaces between moments.
+                Each second births a new configuration—ephemeral, unrepeatable,
+                yet deterministic in its hidden mathematics.
+            </p>
+            <p>
+                The machine reads time. The algorithm dreams in words.
+                Together, they author what neither could create alone.
+            </p>
+        </div>
+    </header>
+
+    <main>
+        <div id="canvas-container"></div>
+
+        <div class="controls">
+            <div class="mode-selector">
+                <label class="radio-label">
+                    <input type="radio" name="mode" value="curated" checked>
+                    <span>Curated Lexicon</span>
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="mode" value="custom">
+                    <span>Custom Text</span>
+                </label>
+            </div>
+
+            <div class="custom-input-container" id="customInputContainer">
+                <label for="customText">Enter your text:</label>
+                <textarea
+                    id="customText"
+                    placeholder="Type or paste your text here... words will be selected randomly from your input."
+                    rows="4"
+                ></textarea>
+                <button id="applyCustom">Apply</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="statement-extended">
+            <h2>On Chance, Time, and Distributed Authorship</h2>
+            <p>
+                In the perpetual now of computational systems, each timestamp becomes a seed—
+                a precise coordinate in time that unfolds into linguistic possibility.
+                The algorithm does not choose freely; it follows rules as strict as any score.
+                Yet from this determinism emerges the unpredictable:
+                constellations that shimmer briefly before dissolving into the next moment.
+            </p>
+            <p>
+                Drawing from Roy Ascott's vision of cybernetic art as collaborative meaning-making,
+                this work positions the viewer not as passive observer but as temporal witness.
+                You cannot control the flow. You cannot pause or rewind.
+                You can only be present as language reorganizes itself according to laws
+                both invisible and absolute.
+            </p>
+            <p>
+                Like Billy Klüver's engineered performances or John Cage's chance operations,
+                the system embraces indeterminacy within structure.
+                The vocabulary is curated, the rhythm measured, the palette deliberate—
+                yet the composition at any given second remains unknown until time itself reveals it.
+            </p>
+            <p>
+                What you witness is neither random nor intentional.
+                It is the space between: where human curation meets algorithmic selection,
+                where memory (the lexicon) intersects with forgetting (each word's dissolution),
+                where code becomes co-author of an ever-changing poem
+                that exists only in the transient present.
+            </p>
+        </div>
+    </footer>
+
+    <script src="lexicon.js"></script>
+    <script src="sketch.js"></script>
+</body>
+</html>
